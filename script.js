@@ -112,6 +112,22 @@ function match () {
 
         
             else {
+                switch (i){
+                    case 0:
+                        console.log("Round One");
+                        break;
+                    case 1:
+                        console.log(" \nRound Two");
+                        break;
+                    case 2: 
+                        console.log(" \nRound Three");
+                        break;
+                    case 3: 
+                        console.log(" \nRound Four");
+                        break;
+                    case 4: 
+                        console.log(" \nFinal Round")
+                }
                 console.log(" \nYou chose " + playerChoice)
                 console.log("Computer chose " +computerChoice)
                 rules(playerChoice, computerChoice)
