@@ -1,7 +1,7 @@
 let computerChoice
 let playerChoice
-let computerWins = 0
-let playerWins = 0
+let computerWins
+let playerWins
 let score = `${playerWins} : ${computerWins}`
 let i
 
@@ -28,7 +28,7 @@ function getPlayerChoice () {
     return playerChoice;
 }
 
-function rules (playerChoice, computerChoice) {
+function rules (playerChoice, computerChoice, playerWins, computerWins) {
     if (playerChoice.toLowerCase() === computerChoice.toLowerCase()) {
         console.log("It's a draw");
         computerWins += 1;
@@ -75,20 +75,20 @@ function match () {
             console.log("Where you goin, punk?")
             i +=99;
             let newGame = prompt("Do you want to start a new game?(Y/N)")
-            if (newGame.toLowerCase() === "y" || newGame.toLowerCase() === "yes") {
-                i = 0;
-                playerWins = 0;
-                computerWins = 0;
+            if (newGame === null || newGame !== "yes" || newGame !== "y") {
+                console.log("Ok go then. GO. Don't talk to me anymore!")
             }
-                else {
-                    console.log("Ok go then. GO. Don't talk to me anymore!")
+                else if (newGame.toLowerCase() === "y" || newGame.toLowerCase() === "yes") {
+                    i = 0;
+                    playerWins = 0;
+                    computerWins = 0;
                 }
 
         }
             else {
                 console.log("You chose " + playerChoice)
                 console.log("Computer chose " +computerChoice)
-                rules(playerChoice, computerChoice)
+                rules(playerChoice, computerChoice, playerWins, computerWins)
                 console.log("Current Score")
                 console.log(score)
             }
