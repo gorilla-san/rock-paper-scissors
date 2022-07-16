@@ -2,7 +2,6 @@ let computerChoice
 let playerChoice
 let computerScore = 0
 let playerScore = 0
-let score = `${playerScore} : ${computerScore}`
 let i
 
 
@@ -30,75 +29,108 @@ function getPlayerChoice () {
 
 function rules (x, y) {
     if (x.toLowerCase() === y.toLowerCase()) {
-        console.log("It's a draw");
+        console.log(" \nIt's a draw");
         computerScore += 1;
         playerScore +=1;
     }
         else if (x.toLowerCase() === "rock" && y.toLowerCase() === "paper" ) {
-            console.log("L's IN CHAT");
+            console.log(" \nL's IN CHAT");
             computerScore += 1;
 
         }
         else if (x.toLowerCase() === "rock" && y.toLowerCase() === "scissors") {
-            console.log("BIG W");
+            console.log(" \nBIG W");
             playerScore +=1;
         }
         else if (x.toLowerCase() === "paper" && y.toLowerCase() === "rock") {
-            console.log("SLAP it");
+            console.log(" \nSLAP it");
             playerScore +=1;
         }
         else if (x.toLowerCase() === "paper" && y.toLowerCase() === "scissors") {
-            console.log("F\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF");
+            console.log(" \nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF");
             computerScore += 1;
         }
         else if (x.toLowerCase() === "scissors" && y.toLowerCase() === "rock") {
-            console.log("You got got");
+            console.log(" \nYou got got");
             computerScore +=1;
         }
         else if (x.toLowerCase() === "scissors" && y.toLowerCase() === "paper") {
-            console.log("Yee, boy, get it");
+            console.log(" \nYee, boy, get it");
             playerScore +=1;
         }
         else {
-            console.log("You dyslexic fuck")
+            console.log(" \nYou dyslexic little...")
             i-=1;
         }
-    
+    return playerScore, computerScore
 }
+
+function determineWinner (playerScore, computerScore, newGamePrompt) {
+    if (newGamePrompt === null) {
+        console.log(" ")
+    } 
+    
+        else if (playerScore > computerScore) {
+        alert("Congratulations! You won")
+    }
+        else if (playerScore === computerScore) {
+            alert("This ain't chess boys...draw...")
+        }
+        else if (playerScore < computerScore) {
+            alert("Whooped")
+        }
+    }
 
 
 function match () {
+    let newGamePrompt
+    let gameStatus 
+
     for (i=0; i<5; i++) { 
         getComputerChoice()
         getPlayerChoice()
+
         if (playerChoice === null) {
             console.log("Where you goin, punk?")
-            let newGame = prompt("Do you want to start a new game?(Y/N)")
+            newGamePrompt = prompt("Do you want to start a new game?(Y/N)")
 
-            if (newGame === null) {
-                console.log("Ok go then. GO. Don't talk to me anymore!")
-                i = 4;
+            if (newGamePrompt === null) {
+                console.log(".\n.\n.\n.\nOk go then. GO. Don't talk to me anymore!")
+                i = 5;
             }
-                else if (newGame.toLowerCase() === "y" || newGame.toLowerCase() === "yes") {
+                else if (newGamePrompt.toLowerCase() === "y" || newGamePrompt.toLowerCase() === "yes") {
                     i = 0;
                     playerScore = 0;
                     computerScore = 0;
                 }
                 else {
-                    console.log("Ok go then. GO. Don't talk to me anymore!")
-                    i = 4;
+                    console.log(".\n.\n.\n.\nOk go then. GO. Don't talk to me anymore!")
+                    i = 5;
                 }
-
         }
+
+
+        
             else {
-                console.log("You chose " + playerChoice)
+                console.log(" \nYou chose " + playerChoice)
                 console.log("Computer chose " +computerChoice)
                 rules(playerChoice, computerChoice)
-                console.log("Current Score")
+                if (i===4) {
+                    gameStatus = "Over"
+                    console.log("\n\n******************\n \nFinal Score\n\n*****************\n_____________________ ")
+                }
+                else {
+                    console.log(" \nCurrent Score")
+                }
+                let score = `Player ${playerScore} : ${computerScore} Computer\n______________________________________________\n                    `
                 console.log(score)
             }
     
     }
+
+    determineWinner(playerScore, computerScore, newGamePrompt)
+
+
 }
 
 match()
