@@ -1,8 +1,8 @@
 let computerChoice
 let playerChoice
-let computerWins
-let playerWins
-let score = `${playerWins} : ${computerWins}`
+let computerScore = 0
+let playerScore = 0
+let score = `${playerScore} : ${computerScore}`
 let i
 
 
@@ -28,36 +28,36 @@ function getPlayerChoice () {
     return playerChoice;
 }
 
-function rules (playerChoice, computerChoice, playerWins, computerWins) {
-    if (playerChoice.toLowerCase() === computerChoice.toLowerCase()) {
+function rules (x, y) {
+    if (x.toLowerCase() === y.toLowerCase()) {
         console.log("It's a draw");
-        computerWins += 1;
-        playerWins +=1;
+        computerScore += 1;
+        playerScore +=1;
     }
-        else if (playerChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "paper" ) {
+        else if (x.toLowerCase() === "rock" && y.toLowerCase() === "paper" ) {
             console.log("L's IN CHAT");
-            computerWins += 1;
+            computerScore += 1;
 
         }
-        else if (playerChoice.toLowerCase() === "rock" && computerChoice.toLowerCase() === "scissors") {
+        else if (x.toLowerCase() === "rock" && y.toLowerCase() === "scissors") {
             console.log("BIG W");
-            playerWins +=1;
+            playerScore +=1;
         }
-        else if (playerChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "rock") {
+        else if (x.toLowerCase() === "paper" && y.toLowerCase() === "rock") {
             console.log("SLAP it");
-            playerWins +=1;
+            playerScore +=1;
         }
-        else if (playerChoice.toLowerCase() === "paper" && computerChoice.toLowerCase() === "scissors") {
+        else if (x.toLowerCase() === "paper" && y.toLowerCase() === "scissors") {
             console.log("F\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF\nF");
-            computerWins += 1;
+            computerScore += 1;
         }
-        else if (playerChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "rock") {
+        else if (x.toLowerCase() === "scissors" && y.toLowerCase() === "rock") {
             console.log("You got got");
-            computerWins +=1;
+            computerScore +=1;
         }
-        else if (playerChoice.toLowerCase() === "scissors" && computerChoice.toLowerCase() === "paper") {
+        else if (x.toLowerCase() === "scissors" && y.toLowerCase() === "paper") {
             console.log("Yee, boy, get it");
-            playerWins +=1;
+            playerScore +=1;
         }
         else {
             console.log("You dyslexic fuck")
@@ -68,27 +68,32 @@ function rules (playerChoice, computerChoice, playerWins, computerWins) {
 
 
 function match () {
-    for (i=0; i<4; i++) { 
+    for (i=0; i<5; i++) { 
         getComputerChoice()
         getPlayerChoice()
         if (playerChoice === null) {
             console.log("Where you goin, punk?")
-            i +=99;
             let newGame = prompt("Do you want to start a new game?(Y/N)")
-            if (newGame === null || newGame !== "yes" || newGame !== "y") {
+
+            if (newGame === null) {
                 console.log("Ok go then. GO. Don't talk to me anymore!")
+                i = 4;
             }
                 else if (newGame.toLowerCase() === "y" || newGame.toLowerCase() === "yes") {
                     i = 0;
-                    playerWins = 0;
-                    computerWins = 0;
+                    playerScore = 0;
+                    computerScore = 0;
+                }
+                else {
+                    console.log("Ok go then. GO. Don't talk to me anymore!")
+                    i = 4;
                 }
 
         }
             else {
                 console.log("You chose " + playerChoice)
                 console.log("Computer chose " +computerChoice)
-                rules(playerChoice, computerChoice, playerWins, computerWins)
+                rules(playerChoice, computerChoice)
                 console.log("Current Score")
                 console.log(score)
             }
