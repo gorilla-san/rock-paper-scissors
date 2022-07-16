@@ -2,7 +2,8 @@ let computerChoice
 let playerChoice
 let computerWins = 0
 let playerWins = 0
-let score = (playerWins + " : " + computerWins)
+let score = `${playerWins} : ${computerWins}`
+let i
 
 
 function getComputerChoice () {
@@ -60,20 +61,37 @@ function rules (playerChoice, computerChoice) {
         }
         else {
             console.log("You dyslexic fuck")
+            i-=1;
         }
     
 }
 
 
 function match () {
-    for (let i=0; i<4; i++) { 
+    for (i=0; i<4; i++) { 
         getComputerChoice()
         getPlayerChoice()
-        console.log("You chose " + playerChoice)
-        console.log("Computer chose " +computerChoice)
-        rules(playerChoice, computerChoice)
-        console.log("Current Score")
-        console.log(score)
+        if (playerChoice === null) {
+            console.log("Where you goin, punk?")
+            i +=99;
+            let newGame = prompt("Do you want to start a new game?(Y/N)")
+            if (newGame.toLowerCase() === "y" || newGame.toLowerCase() === "yes") {
+                i = 0;
+                playerWins = 0;
+                computerWins = 0;
+            }
+                else {
+                    console.log("Ok go then. GO. Don't talk to me anymore!")
+                }
+
+        }
+            else {
+                console.log("You chose " + playerChoice)
+                console.log("Computer chose " +computerChoice)
+                rules(playerChoice, computerChoice)
+                console.log("Current Score")
+                console.log(score)
+            }
     
     }
 }
