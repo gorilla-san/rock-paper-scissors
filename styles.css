@@ -1,0 +1,126 @@
+* {
+    font-family: Lucida Sans Typewriter,Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
+}
+
+html {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* background-color: rgb(192, 192, 192); */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px rgb(177, 177, 177, 50%);
+}
+
+.inBG {
+    pointer-events: none;
+    z-index: -1;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    color: black;
+    background-color: burlywood;
+    border-style: solid;
+    border-color: rgb(134, 134, 134);
+    border-width: 3px;
+    font-size: 20px;
+}
+
+button:hover {
+    transform: scale(1.1);
+    font-weight: 700;
+
+}
+
+.buttonClicked {
+    background-color: white;
+}
+
+.result {
+    width: 400px;
+    background-color: burlywood;
+    border-style: solid;
+    border-color: rgb(134, 134, 134);
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#announcement {
+    height: 50px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#currentScore {
+    height: 30px;
+    font-weight: 700;
+}
+
+.choiceDisplay {
+    height: 30px;
+}
+
+/*WELCOME SCREEN*/
+
+
+.overlay {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 500px;
+    background-color: white;
+    box-shadow: 0 0 10px 1000px rgba(70, 40, 6, 0.425);
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 15px;
+    border-color:rgb(37, 21, 3);
+    gap: 15px;
+    padding: 20px;
+}
+
+#scoreHeadline {
+    border-style: solid;
+    border-color: rgb(134, 134, 134);
+    border-width: 4px, 0, 4px, 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+}
+
+.newGamePrompt {
+    transform: scale(0);
+}
+
+h1 {
+    text-align: center;
+}
+
+.bot {
+    transform: scale(0);
+}
+
